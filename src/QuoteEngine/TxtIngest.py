@@ -5,7 +5,7 @@ from QuoteModel import QuoteModel
 
 class TxtIngestor(IngestorInterface):
 
-    allowed_file_extention = ['txt']
+    allowed_file_extension = ['txt']
     
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
@@ -15,10 +15,11 @@ class TxtIngestor(IngestorInterface):
         quoteList = []
 
         with open(path, encoding='utf8') as f:
+            print(f'PATH: ',path)
 
             for line in f:
-                line = line.strip('\n\n\r').strip().replace(" - ",",").replace(u'\ufeff', '')
-                body, author = tuple(line.split(','))
+                line = line.strip('\n\n\r').strip().replace(u'\ufeff', '')
+                body, author = tuple(line.split(' - '))
                 quoteList.append(QuoteModel(body, author))
         return quoteList
        
@@ -31,7 +32,8 @@ if __name__ == "__main__":
 
 #The project contains a TextIngestor class.
 #The class inherits the IngestorInterface.
-#The class does not depend on any 3rd party library to complete the defined, abstract method signatures to parse Text files.
+#The class does not depend on any 3rd party library to complete the defined, 
+# abstract method signatures to parse Text files.
 #The parse method returns a valid QuoteModel
 
 

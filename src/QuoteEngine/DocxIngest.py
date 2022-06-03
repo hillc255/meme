@@ -6,7 +6,7 @@ import docx
 
 class DocxIngestor(IngestorInterface):
 
-    allowed_file_extention = ['docx']
+    allowed_file_extension = ['docx']
     
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:

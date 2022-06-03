@@ -7,7 +7,8 @@ import pandas as pd
 
 class CSVIngestor(IngestorInterface):
 
-    allowed_file_extention: List[str] = ['csv']
+    #allowed_file_extension: List[str] = ['csv']
+    allowed_file_extension = ['csv']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
