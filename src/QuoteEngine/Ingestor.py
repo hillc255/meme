@@ -10,8 +10,7 @@ from os.path import exists
 
 class Ingestor(IngestorInterface):
     importers = [DocxIngestor, CSVIngestor, PDFIngestor, TxtIngestor]
-
- # exception for extension which is not on list?   
+   
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         if not exists(path):
@@ -33,9 +32,8 @@ if __name__ == "__main__":
     docxList = (Ingestor.parse('./_data/DogQuotes/DogQuotesDOCX.docx'))
     print(f'\nDOC: ',docxList)
 
-    #not working
-    #pdfList = (Ingestor.parse('./_data/DogQuotes/DogQuotesPDF.pdf'))
-    #print(f'\nPDF: ',pdfList)
+    pdfList = (Ingestor.parse('./_data/DogQuotes/DogQuotesPDF.pdf'))
+    print(f'\nPDF: ',pdfList)
 
     #extension does not exist
     try:
@@ -43,7 +41,7 @@ if __name__ == "__main__":
         #print(f'\nError should throw Exception')
         raise
     except:
-        print(f'Ingestor extension not valid')
+        print(f'\nDOCMdocm: Ingestor extension not valid')
 
     #file does not exist
     try:
@@ -51,11 +49,11 @@ if __name__ == "__main__":
         #print(f'\nError should throw Exception')
         raise
     except:
-        print(f'File not found')
+        print(f'\nDOCMtxt: File not found')
 
 #All ingestors are packaged into a main Ingestor class.
 # This class encapsulates all the ingestors to provide one interface 
 # to load any supported file type.
 
 #hillc@LAPTOP-C1T59ERH MINGW64 ~/meme/src (main)
-# python QuoteEngine/Ingestor.py
+#clear;python QuoteEngine/Ingestor.py

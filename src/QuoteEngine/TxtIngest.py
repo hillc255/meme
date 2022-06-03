@@ -15,7 +15,7 @@ class TxtIngestor(IngestorInterface):
         quoteList = []
 
         with open(path, encoding='utf8') as f:
-            print(f'PATH: ',path)
+            #print(f'PATH: ',path)
 
             for line in f:
                 line = line.strip('\n\n\r').strip().replace(u'\ufeff', '')
