@@ -3,7 +3,8 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-class IngestorInterface(ABC):
+class IngestorInterface(ABC):   
+    """IngestorInterface class for Abstract Base Class."""
 
     allowed_file_extension: List[str] = []
 

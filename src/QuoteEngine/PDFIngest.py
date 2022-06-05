@@ -1,3 +1,4 @@
+"""PDFIngest odule provides ingestor for files with pdf extensions."""
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 import subprocess
@@ -8,6 +9,7 @@ import random
 
 
 class PDFIngestor(IngestorInterface):
+    """PDFIngestor class for IngestorInterface."""
 
     allowed_file_extension: List[str] = ['pdf']
 

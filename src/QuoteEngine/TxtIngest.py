@@ -1,9 +1,11 @@
+"""TxtIngest module provides ingestor for files with pdf extensions."""
 from typing import List
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
 
 class TxtIngestor(IngestorInterface):
+    """TxtIngestor class for IngestorInterface."""
 
     allowed_file_extension: List[str] = ['txt']
 

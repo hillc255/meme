@@ -1,3 +1,4 @@
+"""DocxIngestor module provides ingestor for files with docx extensions."""
 from typing import List
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
@@ -5,6 +6,7 @@ import docx
 
 
 class DocxIngestor(IngestorInterface):
+    """DocxIngestor class for IngestorInterface."""
 
     allowed_file_extension: List[str] = ['docx']
 

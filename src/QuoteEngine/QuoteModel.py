@@ -1,4 +1,9 @@
 
+
+"""
+Provides QuoteModel with body and author models
+"""
+
 class QuoteModel:
     def __init__(self, body: str, author: str):
         self.body = body
