@@ -1,4 +1,4 @@
-"""CSVIngest module provides ingestor for files with csv extensions."""
+"""CSVIngest module provides ingestor with csv extension files."""
 
 from typing import List
 from IngestorInterface import IngestorInterface
