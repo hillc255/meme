@@ -1,4 +1,4 @@
-
+"""Ingest module provides one interface to load supported file type."""
 from typing import List
 from QuoteModel import QuoteModel
 from IngestorInterface import IngestorInterface
@@ -10,10 +10,22 @@ from os.path import exists
 
 
 class Ingestor(IngestorInterface):
+    """Class Ingestor.
+
+    Helps to select importers for IngestorInterface.
+    """
+
     importers = [DocxIngestor, CSVIngestor, PDFIngestor, TxtIngestor]
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse() extracts 'body' and 'author' QuoteModel objects.
+
+        Parameters:
+            path (str) : path of file.
+        Return:
+            List[QuoteModel] : List of QuoteModel objects.
+        """
         if not exists(path):
             raise Exception('file does not exist')
         for importer in cls.importers:
