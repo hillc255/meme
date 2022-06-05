@@ -1,16 +1,28 @@
-"""TxtIngest module provides ingestor for files with pdf extensions."""
+"""TxtIngest module provides ingestor with txt extension files."""
+
 from typing import List
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
 
 class TxtIngestor(IngestorInterface):
-    """TxtIngestor class for IngestorInterface."""
+    """TxtIngestor class for IngestorInterface.
+
+    Class has a classmethod to parse txt extension then
+    extract 'body' and 'author' for a QuoteModel object.
+    """
 
     allowed_file_extension: List[str] = ['txt']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse() extracts 'body' and 'author' QuoteModel objects.
+
+        Parameters:
+            path (str) : path of txt file.
+        Return:
+            List[QuoteModel] : List of QuoteModel objects.
+        """
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
