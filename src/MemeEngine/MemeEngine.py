@@ -1,30 +1,62 @@
 import typing
 from typing import Optional
 from PIL import Image, ImageDraw, ImageFont
+import os
+import random
 
 #class for the memeengine
 class MemeEngine:
-    def __init__(self, outPath):
-        self.outPath = outPath
+    def __init__(self, output_dir):
+        self.output_dir = output_dir
 
     #method
-    def make_meme(self, imgPath: str, body: str, author: str) -> Optional[str]:
+    def make_meme(self, img_path: str, body: str, author: str, width=500) -> Optional[str]:
         # loads the image from the imgPath, creating an in-memory represtation of the image
-        img: Image.Image = Image.open(imgPath)
+        img: Image.Image = Image.open(img_path, mode='r')
+        print(f"img: ",img)
+        print(f"body: ",body)
+        print(f"author: ",author)
 
         # create a destination path for the meme
-        destPath = ''
 
-        # Add body and author test to the image
+        outputFile_name = os.path.join(self.output_dir, 
+            f'meme_{random.randint(0,100000000)}.png')
+
+        print(f"OUTPUTFILE_NAME:  {outputFile_name}")
+
+        if width is not None:
+            ratio = width/float(img.size[0])
+            height = int(ratio*float(img.size[1]))
+            img = img.resize((width, height), Image.NEAREST)
+
+        # Add text and author test to the image
+        message = (str(body) + " - "+ str(author))
+        print(f"message: ", message)
+
+        if message is not None:
+            draw = ImageDraw.Draw(img)
+
+            ttfFile = os.path.join(
+                    os.path.dirname(__file__),
+                    'fonts/LilitaOne-Regular.ttf'
+                )
+                
+            font = ImageFont.truetype(ttfFile, size=30)
+            draw.text((10, 30), message, font=font, fill='white')
+
+        print("After message and ImageDraw")
 
         # save the meme to the dest path
-        img.save(destPath)
+        img.save(outputFile_name)
 
-        return destPath
+        print("Saved image")
+
+        return os.path.abspath(outputFile_name)
         
 
 #Requirements:
-#The project defines a MemeGenerator module with the following responsibilities:
+#The project defines a MemeGenerator module with the following 
+# responsibilities:
 
 #Loading of a file from disk
 #Transform image by resizing to a maximum width of 500px while maintaining the 

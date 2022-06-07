@@ -35,9 +35,8 @@ def generate_meme(path=None, body=None, author=None):
             quotes.extend(Ingestor.parse(f))
         #select random quote with author
         quote = random.choice(quotes)
-        print(f"\nquote: ", quote)
-        print(f"\nquote.body: ", quote.body)
-        print(f"\nquote.author: ", quote.author)
+        print(f"quote: ", quote)
+
     else:
         if author is None:
             raise Exception('Author Required if Body is Used')
@@ -46,19 +45,23 @@ def generate_meme(path=None, body=None, author=None):
     #constructed MemeEngine with output directory
     meme = MemeEngine('./tmp')
 
+    print("After meme constructor")
+
     #making the meme
-    path = meme.make_meme(img, quote.body, quote.author)
+    path = meme.make_meme(img, quote.body, quote.author, width=500) 
+
+    print(f"path: ", path)
 
     #constructed meme full path
     return path
 
 
 if __name__ == "__main__":
-    #args = None  #why is this needed?
+    args = None  #why is this needed?
     parser = argparse.ArgumentParser(description='Parse Meme CLI arguments.')
-    parser.add_argument('--path', type=str, help='path to an image file', default=None)
-    parser.add_argument('--body', type=str, help='quote body to add to the image', default=None)
-    parser.add_argument('--author', type=str, help='quote author to add to the image', default=None)
+    parser.add_argument('--path', help='path to an image file', default=None)
+    parser.add_argument('--body', help='quote body to add to the image', default=None)
+    parser.add_argument('--author', help='quote author to add to the image', default=None)
     args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))
 

@@ -32,11 +32,9 @@ class DocxIngestor(IngestorInterface):
 
         for para in doc.paragraphs:
             if para.text != "":
-                parse = para.text.split('-')
-
+                parse = para.text.replace('"', '').split('-')
                 if len(parse) == 2:
                     new_quoteList = QuoteModel(parse[0], str(parse[1]))
-                    new_quoteList = para.text.replace('"', '')
                     quoteList.append(new_quoteList)
 
         return quoteList
