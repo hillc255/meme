@@ -57,7 +57,7 @@ def generate_meme(path=None, body=None, author=None):
 
 
 if __name__ == "__main__":
-    args = None  #why is this needed?
+    args = None
     parser = argparse.ArgumentParser(description='Parse Meme CLI arguments.')
     parser.add_argument('--path', help='path to an image file', default=None)
     parser.add_argument('--body', help='quote body to add to the image', default=None)
