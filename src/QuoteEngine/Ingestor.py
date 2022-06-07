@@ -1,11 +1,11 @@
 """Ingest module provides one interface to load supported file type."""
 from typing import List
-from QuoteModel import QuoteModel
-from IngestorInterface import IngestorInterface
-from DocxIngest import DocxIngestor
-from CSVIngest import CSVIngestor
-from PDFIngest import PDFIngestor
-from TxtIngest import TxtIngestor
+from .QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .DocxIngest import DocxIngestor
+from .CSVIngest import CSVIngestor
+from .PDFIngest import PDFIngestor
+from .TxtIngest import TxtIngestor
 from os.path import exists
 
 
@@ -50,10 +50,12 @@ if __name__ == "__main__":
 
     try:
         docmList = (Ingestor.parse('./_data/DogQuotes/DogQuotesDOCM.docm'))
-    except ValueError:
-        print("\nDOCMdocm: Ingestor extension not valid")
+        raise
+    except:
+        print(f'\nDOCMdocm: Ingestor extension not valid')
 
     try:
         docmtxtList = (Ingestor.parse('./_data/DogQuotes/DogQuotesDOCM.txt'))
-    except FileNotFoundError:
+        raise
+    except:
         print(f'\nDOCMtxt: File not found')

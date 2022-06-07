@@ -1,8 +1,8 @@
 """CSVIngest module provides ingestor with csv extension files."""
 
 from typing import List
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 import pandas as pd
 
 

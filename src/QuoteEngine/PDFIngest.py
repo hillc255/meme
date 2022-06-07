@@ -1,7 +1,7 @@
 """PDFIngest module provides ingestor with pdf extension files."""
 
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 import subprocess
 import tempfile
 import os

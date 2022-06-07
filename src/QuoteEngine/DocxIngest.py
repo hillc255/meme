@@ -1,8 +1,8 @@
 """DocxIngest module provides ingestor with docx extension files."""
 
 from typing import List
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 import docx
 
 

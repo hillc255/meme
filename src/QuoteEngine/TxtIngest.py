@@ -1,8 +1,8 @@
 """TxtIngest module provides ingestor with txt extension files."""
 
 from typing import List
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 
 
 class TxtIngestor(IngestorInterface):
