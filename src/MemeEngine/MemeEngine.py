@@ -3,6 +3,8 @@ from typing import Optional
 from PIL import Image, ImageDraw, ImageFont
 import os
 import random
+from random import randint
+import textwrap
 
 #class for the memeengine
 class MemeEngine:
@@ -42,7 +44,12 @@ class MemeEngine:
                 )
                 
             font = ImageFont.truetype(ttfFile, size=30)
-            draw.text((10, 30), message, font=font, fill='white')
+
+            #wrapped message by message char length
+            message = textwrap.fill(text=message, width=20)
+
+            #generate random x,y coordinates
+            draw.text(((random.randint(10,250)), (random.randint(10,250))), message, font=font, fill='white')
 
         print("After message and ImageDraw")
 

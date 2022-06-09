@@ -1,10 +1,11 @@
 import random
 import os
 import requests
-import MemeEngine
+from MemeEngine import MemeEngine
+from QuoteEngine import Ingestor, QuoteModel
 from flask import Flask, render_template, abort, request
 
-# @TODO Import your Ingestor and MemeEngine classes
+# @TODO Import your Ingestor and MemeEngine classes--ok
 
 app = Flask(__name__)
 
@@ -74,3 +75,31 @@ def meme_post():
 
 if __name__ == "__main__":
     app.run()
+
+#Requirements
+# The project contains a main.py file that uses the ImageCaptioner, 
+# DocxIngestor, PDFIngestor, and CSVIngestor methods to generate a 
+# random captioned image.
+
+#The program must be executable from the command line.
+#The program takes three OPTIONAL arguments:
+
+#A string quote body
+#A string quote author
+#An image path
+#The program returns a path to a generated image.
+#If any argument is not defined, a random selection is used.
+
+#Interface with web resources using flask and requests.
+
+#The project completes the Flask app starter code in app.py. 
+# All @TODO tasks listed in the file have been completed.
+
+#app.py 
+# uses the Quote Engine module and Meme Generator modules to generate 
+# a random captioned image.
+
+#app.py 
+# uses the requests package to fetch an image from a user submitted URL.
+
+#The flask server runs with no errors
