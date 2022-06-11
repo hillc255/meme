@@ -20,4 +20,25 @@ MemeEngine Module
 QuoteModel
     Provides a model for the quote body and quote author.
 
-#### Examples of Use
+#### CLI Examples
+Test 1: No parameter values are given
+Expected: Meme generated with random image and quote
+$python src/main.py
+
+Test 2: All valid parameter values are given (path, body, author)
+Expected: Meme generated with image and text
+$python src/main.py --path './_data/photos/dog/xander_1.jpg' body-- 'This is a test' author-- 'Teacher"
+
+Test 3:  Only valid path parameter is given
+Expected: Meme generated with image in path given
+$python src/main.py --path './_data/photos/dog/xander_1.jpg'
+
+Test 4: Only invalid path parameter is given
+Expected:  Exception stating unable to open image
+$python src/main.py --path './_data/photos/dog/noimage_.jpg'
+
+Test 5: Only valid author or valid body is given
+Expected: Exception stating both author and body values must be given 
+$python src/main.py --author 'Teacher'
+or
+$python src/main.py --body 'This is a test'
