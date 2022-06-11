@@ -1,4 +1,4 @@
-### Meme Generator
+### MEME GENERATOR
 Program generates a meme with an image and an overlaying quote.
 
 #### Overview
@@ -9,13 +9,15 @@ Meme generator utilizes an argparse command-line interface (CLI) and Flask web-a
 
 #### Modules & Sub-modules Roles and Responsibilities
 QuoteEngine Module
-   Uses Ingestor Interface abstract base and generic classes to ingest and parse quotes from CSVIngest, DocxIngest, PDFIngest and TxtIngest files.
+    Uses Interface and Ingestor Interface abstract base and generic classes
+    to parse quotes from CSVIngest, DocxIngest, PDFIngest and TxtIngest files.
 
 MemeEngine Module
-   Used to select a random image and write a quote selected from the QuoteEngine Module on it to create a meme.
+    Used to select a random image and write a quote parsed from the 
+    QuoteEngine Module to create a meme.
 
 #### Dependencies
-Ingestor
-QuoteModel provides model for the quote body and quote author.
+QuoteModel
+    Provides a model for the quote body and quote author.
 
 #### Examples of Use
