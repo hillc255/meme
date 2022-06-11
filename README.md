@@ -1,11 +1,11 @@
-Meme Generator
+# MEME GENERATOR
 
-Project overview
+## Project overview
 
-Set-up and run instructions
+## Set-up and run instructions
 
-Modules and sub-modules roles-and-responsibilities
+## Modules and Sub-modules Roles and Responsibilities
 
-Dependencies
+## Dependencies
 
-Examples of how to use the module
+## Examples of how to use the module
