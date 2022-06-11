@@ -16,11 +16,10 @@ def generate_meme(path=None, body=None, author=None):
 
         for root, dirs, files in os.walk(images):
             imgs = [os.path.join(root, name) for name in files]
-
         img = random.choice(imgs)
     else:
         img = path[0]
-
+        print(f'GENERATE path: {img}')
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                        './_data/DogQuotes/DogQuotesDOCX.docx',
