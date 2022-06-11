@@ -8,10 +8,14 @@ Meme generator utilizes an argparse command-line interface (CLI) and Flask web-a
 
 
 #### Modules & Sub-modules Roles and Responsibilities
-1. QuoteEngine Module - 
+QuoteEngine Module
+   Uses Ingestor Interface abstract base and generic classes to ingest and parse quotes from CSVIngest, DocxIngest, PDFIngest and TxtIngest files.
 
-2. MemeEngine - 
+MemeEngine Module
+   Used to select a random image and write a quote selected from the QuoteEngine Module on it to create a meme.
 
 #### Dependencies
+Ingestor
+QuoteModel provides model for the quote body and quote author.
 
 #### Examples of Use
