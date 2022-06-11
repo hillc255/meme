@@ -43,7 +43,7 @@ def generate_meme(path=None, body=None, author=None):
         quote = QuoteModel(body, author)
 
     #constructed MemeEngine with output directory
-    meme = MemeEngine('./tmp')
+    meme = MemeEngine.MemeEngine('./tmp')
 
     print("After meme constructor")
 
@@ -54,7 +54,6 @@ def generate_meme(path=None, body=None, author=None):
 
     #constructed meme full path
     return path
-
 
 if __name__ == "__main__":
     args = None

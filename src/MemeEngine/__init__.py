@@ -1,1 +1,1 @@
-from .MemeEngine import MemeEngine
+from MemeEngine import MemeEngine

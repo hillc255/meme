@@ -14,17 +14,23 @@ class MemeEngine:
     #method
     def make_meme(self, img_path: str, body: str, author: str, width=500) -> Optional[str]:
         # loads the image from the imgPath, creating an in-memory represtation of the image
-        img: Image.Image = Image.open(img_path, mode='r')
+        
+        try:
+            img: Image.Image = Image.open(img_path, mode='r')
+        except Exception:
+            raise OSError('Unable to open file')
+
         print(f"img: ",img)
         print(f"body: ",body)
         print(f"author: ",author)
+
 
         # create a destination path for the meme
 
         outputFile_name = os.path.join(self.output_dir, 
             f'meme_{random.randint(0,100000000)}.png')
 
-        print(f"OUTPUTFILE_NAME:  {outputFile_name}")
+        print(f"outputFile_name:  {outputFile_name}")
 
         if width is not None:
             ratio = width/float(img.size[0])
@@ -42,15 +48,19 @@ class MemeEngine:
                     os.path.dirname(__file__),
                     'fonts/LilitaOne-Regular.ttf'
                 )
-                
-            font = ImageFont.truetype(ttfFile, size=30)
+
+            try:    
+                font = ImageFont.truetype(ttfFile, size=30)
+            except Exception:
+                raise OSError('Invalid font path')
 
             #wrapped message by message char length
             message = textwrap.fill(text=message, width=20)
 
             #generate random x,y coordinates
-            draw.text(((random.randint(10,250)), (random.randint(10,250))), message, font=font, fill='white')
+            draw.text(((random.randint(20,250)), (random.randint(20,250))), message, font=font, fill='white')
 
+        print("After message and ImageDraw")
         print("After message and ImageDraw")
 
         # save the meme to the dest path
@@ -58,7 +68,8 @@ class MemeEngine:
 
         print("Saved image")
 
-        return os.path.abspath(outputFile_name)
+        return os.path.relpath(path=outputFile_name, start=os.curdir)
+        #return os.path.abspath(outputFile_name)
         
 
 #Requirements:
