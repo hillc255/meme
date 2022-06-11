@@ -15,4 +15,4 @@ args = parser.parse_args()
 print("Created meme: ", generate_meme(args.path, args.body, args.author))
 
 #hillc@LAPTOP-C1T59ERH MINGW64 ~/meme/src (main)
-#$ python main.py --path './_data/photos/dog/xander_.jpg'
+#$ python main.py --path './_data/photos/dog/xander_1.jpg'
