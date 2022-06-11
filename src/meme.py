@@ -3,7 +3,6 @@ import os
 import random
 from MemeEngine import MemeEngine
 from QuoteEngine import Ingestor, QuoteModel
-import argparse
 
 
 def generate_meme(path=None, body=None, author=None):
@@ -43,15 +42,3 @@ def generate_meme(path=None, body=None, author=None):
     path = meme.make_meme(img, quote.body, quote.author, width=500)
 
     return path
-
-
-if __name__ == "__main__":
-    args = None
-    parser = argparse.ArgumentParser(description='Parse Meme CLI arguments.')
-    parser.add_argument('--path', help='path to an image file', default=None)
-    parser.add_argument('--body', help='quote body to add to the image',
-                        default=None)
-    parser.add_argument('--author', help='quote author to add to the image',
-                        default=None)
-    args = parser.parse_args()
-    print(generate_meme(args.path, args.body, args.author))
