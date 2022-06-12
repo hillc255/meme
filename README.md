@@ -6,7 +6,7 @@ Meme generator is a python 3.9 project.
 Run Meme from an argparse command-line interface (CLI) or as a Flask web-app.
 
 #### Set-up and Run Instructions
-1. Clone Meme generator from github.
+1. Clone Meme generator project from github.
 2. Install and activate virtual environment:
     ~meme $source env/Scripts/activate
 3. Install requirements in the shell.
@@ -38,7 +38,8 @@ Expected: Meme generated with random image and quote
 
 Test 2: All valid parameter values are given (path, body, author)
 Expected: Meme generated with image and text
-~/meme/src $python main.py --path './_data/photos/dog/xander_1.jpg' body-- 'This is a test' author-- 'Teacher"
+~/meme/src $python main.py --path './_data/photos/dog/xander_1.jpg' 
+body-- 'This is a test' author-- 'Teacher"
 
 Test 3:  Only valid path parameter is given
 Expected: Meme generated with image in path given
@@ -57,4 +58,25 @@ Expected: Defaults to random selection of quote author and body
 ~/meme/src $python main.py --author 'Teacher'
 
 #### Flask App Examples
-Interface with web resources using flask and requests.
+Web interface using flask and requests.
+
+Test 1: Launch Flask app
+Expected: Get random meme image and generate random quote
+
+Test 2: Pn Flask web app select "Random" button:
+Expected: Get another random meme image and generate random quote
+
+Test 3: On Flask web app select "Creator" button: 
+http://127.0.0.1:5000/create
+Expected: Create meme_form.html appears
+
+Test 4: Flask web app "Create" form.
+Post input values of valid image url and text for body and author
+img_url: https://images.rawpixel.com/image_1300/ \  cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pbWFnZS1rcHFrNXh0e \ C5qcGc.jpg
+body:   Meow, meow
+Author: Kitty
+Expected: Meme created with image and text in ./static
+
+Test 5: Flask web app Create form.
+Post input vlaues of invalid image url and no text for body, author
+Expected: Validation of each form field will display
