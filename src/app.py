@@ -1,22 +1,20 @@
-from io import StringIO
+"""Flask app using the QuoteEngine and MemeEngine modules to generate a meme"""
+
 import random
 import os
 import requests
-from pathlib import Path
 from MemeEngine import MemeEngine
-from QuoteEngine import Ingestor, IngestorInterface, QuoteModel
+from QuoteEngine import Ingestor
 from flask import Flask, render_template, abort, request
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 from io import BytesIO
-
-# @TODO Import your Ingestor and MemeEngine classes--ok
+from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
 dirname = os.path.dirname(__file__)
 
 meme = MemeEngine.MemeEngine('./static')
-
 
 def setup():
     """ Load all resources """
@@ -26,20 +24,13 @@ def setup():
                    './_data/DogQuotes/DogQuotesPDF.pdf',
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
-    # TODO: Use the Ingestor class to parse all files in the
-    # quote_files variable - ok
-
     quotes = []
     for f in quote_files:
         quotes.extend(Ingestor.parse(f))
 
     images_path = "./_data/photos/dog/"
 
-    # TODO: Use the pythons standard library os class to find all
-    # images within the images images_path directory - ok
-
     imgs = []
-    #get desired image path with os.walk
     for root, dirs, files in os.walk(images_path):
         imgs = [os.path.join(root, name) for name in files]
 
@@ -47,22 +38,12 @@ def setup():
 
 quotes, imgs = setup()
 
-
 @app.route('/', methods=['GET'])
 def meme_rand():
     """ Generate a random meme """
 
-    # @TODO:
-    # Use the random python standard library class to:
-    # 1. select a random image from imgs array - ok
-
     img = random.choice(imgs)
     print(f"\nappy.py img: ", img)
-
-    #img = "None"
-    #quote = QuoteModel("None", "None")
-
-    # 2. select a random quote from the quotes array - ok
 
     quote = random.choice(quotes)
     print(f"app.py quote: {quote}")
@@ -78,59 +59,54 @@ def meme_form():
     """ User input for meme information """
     return render_template('meme_form.html')
 
-
 @app.route('/create', methods=['POST'])
 def meme_post():
     """ Create a user defined meme """
 
-    # @TODO:
-    # 1. Use requests to save the image from the image_url
-    #    form param to a temp local file.
-
-    #get image url from meme_form.html
+    error = None; 
+ 
     img_url = request.form.get('image_url')
-    
-    #get the image from the url and write it with random name
-    #  into tmp directory
+
     if img_url is None:
+        error="Invalid image URL"
         abort(404)
+    
+    response = requests.get(img_url)
 
-   
-    #try:
-       # url = img_url.decode("utf-8")
-    #except UnicodeEncodeError: 
-       # pass
-   
-
-    response = requests.get(img_url) 
     if response.status_code != 200:
-        print('Image Couldn\'t be retreived')
+        error="Invalid image URL"
     else:
-        #with open(img_url, 'rb') as f:
-            #contents = f.read()
-          
-        img_response = Image.open(BytesIO(response.content)) 
-        #img_response = Image.open(response.content)
- 
- 
-    # save the image to a tmp directory
+        try:
+            img_response = Image.open(BytesIO(response.content)) 
+        except HTTPException:
+            error="Invalid image URL"
+            abort(500)
+    
         img_path = os.path.join("./tmp", 
-                f'meme_{random.randint(0,100000000)}.png')
+            f'meme_{random.randint(0,100000000)}.png')
 
         img_response.save(img_path)
 
         body = request.form.get('body', "")
         author = request.form.get('author', "")
 
-    # 2. Use the meme object to generate a meme using this temp
-    #    file and the body and author form paramaters.
         path = meme.make_meme(img_path, body, author)
 
-    # 3. Remove the temporary saved image.
         os.remove(img_path)
-    
+
         return render_template('meme.html', path=path)
 
+@app.errorhandler(500)
+def internal_error(error):
+    error="Invalid image URL"
+    return render_template("meme_form.html",error=error)
+    #return "500 error",500
+
+@app.errorhandler(404)
+def not_found(error):
+    error="Invalid image URL"
+    return render_template("meme_form.html", error=error)
+    #return "404 error",404
 
 if __name__ == "__main__":
     app.run()

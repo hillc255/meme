@@ -18,7 +18,7 @@ def generate_meme(path=None, body=None, author=None):
             imgs = [os.path.join(root, name) for name in files]
         img = random.choice(imgs)
     else:
-        img = path#[0]  what is this - string?
+        img = path
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -34,8 +34,6 @@ def generate_meme(path=None, body=None, author=None):
     else:
         if author is None:
             raise Exception('Author Required if Body is Used')
-        if body is None:
-            raise Exception('Body Required if Author is Used')
 
         quote = QuoteModel(body, author)
 
