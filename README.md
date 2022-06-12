@@ -2,7 +2,7 @@
 Program generates a meme using an image and an overlaying quote.
 
 #### Overview
-Meme generator is a python 3.9 project.
+Meme generator is a python 3.9x project.
 Run Meme from an argparse command-line interface (CLI) or as a Flask web-app.
 
 #### Set-up and Run Instructions
@@ -72,8 +72,7 @@ Expected: Create meme_form.html appears
 
 Test 4: Flask web app "Create" form.
 Post input values of valid image url and text for body and author
-img_url: https://images.rawpixel.com/image_1300/\  cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pb\
-WFnZS1rcHFrNXh0eC5qcGc.jpg
+img_url: c
 body:   Meow, meow
 Author: Kitty
 Expected: Meme created with image and text in ./static

@@ -3,7 +3,6 @@
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 import subprocess
-import tempfile
 import os
 from typing import List
 import random
