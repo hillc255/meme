@@ -3,7 +3,7 @@ Program generates a meme using an image and an overlaying quote.
 
 #### Overview
 Meme generator is a python 3.9 project.
-It is run from an argparse command-line interface (CLI) or from a Flask web-app.
+Run Meme from an argparse command-line interface (CLI) or as a Flask web-app.
 
 #### Set-up and Run Instructions
 1. Clone Meme generator from github.
@@ -48,10 +48,13 @@ Test 4: Only invalid path parameter is given
 Expected:  Exception stating unable to open image
 ~/meme/src $python main.py --path './_data/photos/dog/noimage_.jpg'
 
-Test 5: Only valid author or valid body is given
-Expected: Exception stating both author and body values must be given 
-~/meme/src $python main.py --author 'Teacher'
-or
+Test 5: Only valid body is given
+Expected: Exception stating author is required if body is given 
 ~/meme/src $python main.py --body 'This is a test'
 
+Test 6: Only valid author is given
+Expected: Defaults to random selection of quote author and body
+~/meme/src $python main.py --author 'Teacher'
+
 #### Flask App Examples
+Interface with web resources using flask and requests.
