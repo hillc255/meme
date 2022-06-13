@@ -64,7 +64,7 @@ Web interface using flask and requests.
 Test 1: Launch Flask app<br />
 Expected: Get random meme image and generate random quote
 
-Test 2: Pn Flask web app select "Random" button:<br />
+Test 2: On Flask web app select "Random" button:<br />
 Expected: Get another random meme image and generate random quote
 
 Test 3: On Flask web app select "Creator" button:<br />
@@ -73,12 +73,12 @@ Expected: Create meme_form.html appears
 
 Test 4: Flask web app "Create" form.<br />
 Post input values of valid image url and text for body and author<br />
-img_url: https://images.rawpixel.com/image_1300/ \<br /> cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pbWFnZ \<br />
-S1rcHFrNXh0eC5qcGc.jpg
+img_url: https://images.rawpixel.com/image_1300/ \ cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pbWFnZ \
+S1rcHFrNXh0eC5qcGc.jpg <br /> 
 body:   Meow, meow <br />
 Author: Kitty <br />
 Expected: Meme created with image and text in ./static
 
 Test 5: Flask web app Create form.<br />
-Post input vlaues of invalid image url and no text for body, author<br />
+Post input values of invalid image url and no text for body, author<br />
 Expected: Validation of each form field will display
