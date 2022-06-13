@@ -13,6 +13,9 @@ app = Flask(__name__)
 
 dirname = os.path.dirname(__file__)
 
+if not os.path.exists('./static'):
+    os.makedirs('./static')
+
 meme = MemeEngine.MemeEngine('./static')
 
 
@@ -81,6 +84,9 @@ def meme_post():
         except HTTPException:
             error = "Invalid image URL"
             abort(500)
+
+        if not os.path.exists("./tmp"):
+            os.makedirs("./tmp")
 
         img_path = os.path.join("./tmp",
                                 f'meme_{random.randint(0,100000000)}.png')

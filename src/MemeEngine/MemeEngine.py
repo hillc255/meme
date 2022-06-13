@@ -4,7 +4,6 @@ from typing import Optional
 from PIL import Image, ImageDraw, ImageFont
 import os
 import random
-from random import randint
 import textwrap
 
 
