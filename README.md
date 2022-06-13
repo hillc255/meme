@@ -40,7 +40,7 @@ Expected: Meme generated with random image and quote<br />
 Test 2: All valid parameter values are given (path, body, author)<br />
 Expected: Meme generated with image and text<br />
 ~/meme/src $python main.py --path './_data/photos/dog/xander_1.jpg'<br />
-body-- 'This is a test' author-- 'Teacher"<br />
+body-- 'This is a test' author-- 'Teacher'<br />
 
 Test 3:  Only valid path parameter is given<br />
 Expected: Meme generated with image in path given<br />
@@ -73,7 +73,7 @@ Expected: Create meme_form.html appears
 
 Test 4: Flask web app "Create" form.<br />
 Post input values of valid image url and text for body and author<br />
-img_url: https://images.rawpixel.com/image_1300/ \ cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pbWFnZ \
+img_url: https://images.rawpixel.com/image_1300/  cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsNDgyNDQxMTEwOS1pbWFnZ \
 S1rcHFrNXh0eC5qcGc.jpg <br /> 
 body:   Meow, meow <br />
 Author: Kitty <br />
