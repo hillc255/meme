@@ -51,11 +51,11 @@ if __name__ == "__main__":
     try:
         docmList = (Ingestor.parse('./_data/DogQuotes/DogQuotesDOCM.docm'))
         raise
-    except:
+    except FileNotFoundError:
         print(f'\nDOCMdocm: Ingestor extension not valid')
 
     try:
         docmtxtList = (Ingestor.parse('./_data/DogQuotes/DogQuotesDOCM.txt'))
         raise
-    except:
+    except FileNotFoundError:
         print(f'\nDOCMtxt: File not found')
